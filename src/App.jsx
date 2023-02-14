@@ -5,6 +5,9 @@ import feuille from "./assets/feuille.png";
 import pierre from "./assets/pierre.png";
 import lezard from "./assets/lezard.png";
 import spock from "./assets/spock.png";
+import matchNul from "./assets/matchNul.png";
+import gameover from "./assets/gameover.png";
+import victory from "./assets/victory.png";
 import "./App.css";
 
 const choices = ["pierre", "ciseaux", "feuille", "lezard", "spock"];
@@ -91,6 +94,25 @@ function App() {
 
   return (
     <div className="App">
+      {/* affichage du jeu de l'adverseraise  */}
+      <div>
+        <div>L'adeversaire a : {ennemy}</div>
+        {ennemy == "pierre" && (
+          <img src={pierre} className="logo" alt="React logo" />
+        )}
+        {ennemy == "feuille" && (
+          <img src={feuille} className="logo" alt="React logo" />
+        )}
+        {ennemy == "ciseaux" && (
+          <img src={ciseaux} className="logo" alt="React logo" />
+        )}
+        {ennemy == "lezard" && (
+          <img src={lezard} className="logo" alt="React logo" />
+        )}
+        {ennemy == "spock" && (
+          <img src={spock} className="logo" alt="React logo" />
+        )}
+      </div>
       <div className="col">
         <div onClick={() => play("pierre")}>
           <img src={pierre} className="logo" alt="React logo" />
@@ -108,10 +130,19 @@ function App() {
           <img src={spock} className="logo" alt="React logo" />
         </div>
       </div>
-      {/* affichage du jeu de l'adverseraise  */}
-      <div>Ennemy: {ennemy}</div>
-      <div>Played: {played}</div>
+      <div>Vous avez jouer: {played}</div>
       <div>Resultat : {result}</div>
+      <div>
+        {result == "Victoire" && (
+          <img src={victory} className="logo" alt="React logo" />
+        )}
+        {result == "Défaite" && (
+          <img src={gameover} className="logo" alt="React logo" />
+        )}
+        {result == "Match null" && (
+          <img src={matchNul} className="logo" alt="React logo" />
+        )}
+      </div>
     </div>
   );
 }
