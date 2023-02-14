@@ -18,8 +18,9 @@ const getRandomChoice = () => {
 function App() {
   const [ennemy, setEnnemy] = useState(getRandomChoice());
   const [played, setPlayed] = useState(null);
-
-  console.log("execution", Date.now);
+  Notification.requestPermission().then((result) => {
+    console.log(result);
+  });
 
   const result = useMemo(() => {
     console.log(
@@ -31,56 +32,70 @@ function App() {
         //   setEnnemy(getRandomChoice());
         //   setPlayed(null);
         // }, 2000);
+        new Notification("Victoire");
         return "Victoire";
       } else if (ennemy == "feuille" || ennemy == "spock") {
         // setTimeout(() => {
         //   setEnnemy(getRandomChoice());
         //   setPlayed(null);
         // }, 2000);
+        new Notification("Défaite");
         return "Défaite";
       } else {
         // setTimeout(() => {
         //   setEnnemy(getRandomChoice());
         //   setPlayed(null);
         // }, 2000);
+        new Notification("Match null");
         return "Match null";
       }
     } else if (played === "feuille") {
       if (ennemy === "pierre" || ennemy === "spock") {
+        new Notification("Victoire");
         return "Victoire";
       } else if (ennemy === "ciseaux" || ennemy === "lezard") {
+        new Notification("Défaite");
         return "Défaite";
       } else {
+        new Notification("Match null");
         return "Match null";
       }
       // win/loss for ciseaux
     } else if (played === "ciseaux") {
       if (ennemy === "feuille" || ennemy === "lezard") {
+        new Notification("Victoire");
         return "Victoire";
       } else if (ennemy === "pierre" || ennemy === "spock") {
+        new Notification("Défaite");
         return "Défaite";
       } else {
+        new Notification("Match null");
         return "Match null";
       }
       // win/loss for lezard
     } else if (played === "lezard") {
       if (ennemy === "spock" || ennemy === "feuille") {
+        new Notification("Victoire");
         return "Victoire";
       } else if (ennemy === "pierre" || ennemy === "ciseaux") {
+        new Notification("Défaite");
         return "Défaite";
       } else {
+        new Notification("Match null");
         return "Match null";
       }
       // win/loss for spock
     } else {
       if (ennemy === "ciseaux" || ennemy === "pierre") {
+        new Notification("Victoire");
         return "Victoire";
       } else if (ennemy === "lezard" || ennemy === "feuille") {
+        new Notification("Défaite");
         return "Défaite";
       } else {
+        new Notification("Match null");
         return "Match null";
       }
-      return "Victoire";
     }
   }, [ennemy, played]);
 
